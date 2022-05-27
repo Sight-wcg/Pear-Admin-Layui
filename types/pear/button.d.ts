@@ -3,15 +3,14 @@
  */
 interface ButtonLoadOptions {
   /**
-   * 元素选择器或 Css 选择器 
+   * 元素选择器或 Css 选择器
    * @example
    * elem: '#userBtn'
    */
   elem: string | HTMLElement;
   /**
-   * 可选，规定加载时间，单位 ms 
-   * @example
-   * time: 500
+   * 可选，规定加载时间，单位 ms
+   * @example 500
    */
   time?: number;
   /**

@@ -1,3 +1,4 @@
+/// <reference path="../pear/index.d.ts" />
 interface Layui extends Pear {
     $: JQueryStatic;
     carousel: Layui.Carousel;
@@ -23,14 +24,6 @@ interface Layui extends Pear {
     upload: Layui.Upload;
     util: Layui.Util;
     v: string;
-    // ---------------- pear admin modules ------------------- 
-    // button: Pear.PearButton;
-    // common: Pear.PearCommon;
-    // context: Pear.PearContext;
-    // convert: Pear.PearConvert;
-    // cropper: Pear.PearCropper;
-    // toast: Pear.PearToast;
-
 
     // https://www.layui.com/doc/base/infrastructure.html
     /**
@@ -52,8 +45,19 @@ interface Layui extends Pear {
      *   layui._isArray($('div')); true	<br/>&nbsp;
      *   layui._isArray(document.querySelectorAll('div')); true
      * @param [obj] 如 Array、NodeList、jQuery 对象等等。
+		 * @deprecated since version 2.6.9 {@link isArray}
      */
     _isArray(obj: any): boolean;
+
+    // https://www.layui.com/doc/base/infrastructure.html
+    /**
+     * 对象是否为泛数组结构，实例：	<br/>&nbsp;
+     *   layui.isArray([1,6]); true	<br/>&nbsp;
+     *   layui.isArray($('div')); true	<br/>&nbsp;
+     *   layui.isArray(document.querySelectorAll('div')); true
+     * @param [obj] 如 Array、NodeList、jQuery 对象等等。
+		 */
+	  isArray(obj: any): boolean;
 
     // https://www.layui.com/doc/base/infrastructure.html
     /**
@@ -61,8 +65,19 @@ interface Layui extends Pear {
      *  常见类型字符:Function|Array|Date|RegExp|Object|Error|Symbol	<br/>&nbsp;
      *  实例：layui._typeof([]); //array layui._typeof({}); //object layui._typeof(new Date()); //date等等。
      * @param [operand]  参数
+		 * @deprecated since version 2.6.9 {@link type}
+		 *
      */
     _typeof(operand: any): string;
+
+		/**
+		 * 获取详细数据类型（基本数据类型和各类常见引用类型）	<br/>&nbsp;
+     *  常见类型字符:Function|Array|Date|RegExp|Object|Error|Symbol	<br/>&nbsp;
+     *  实例：layui._typeof([]); //array layui._typeof({}); //object layui._typeof(new Date()); //date等等。
+		 * @param [operand]  参数
+		 */
+	  type(operand: any): string;
+
 
     /**
      * 动态加载 CSS文件（相对路径）
