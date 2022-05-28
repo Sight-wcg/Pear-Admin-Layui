@@ -20,7 +20,7 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 			defaultOpen: opt.defaultOpen,
 			defaultSelect: opt.defaultSelect,
 			control: opt.control,
-			controlWidth: opt.controlWidth ? opt.controlWidth : 500,
+			controlWidth: opt.controlWidth ? opt.controlWidth : "auto",
 			defaultMenu: opt.defaultMenu,
 			accordion: opt.accordion,
 			height: opt.height,
@@ -29,6 +29,15 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 			change: opt.change ? opt.change : function () { },
 			done: opt.done ? opt.done : function () { }
 		}
+
+		var tempDone = option.done;
+		option.done = function(){
+			if (option.control) {
+				rationalizeHeaderControlWidthAuto(option);
+			}
+			tempDone();
+		}
+
 		if (option.async) {
 			if (option.method === "GET") {
 				getData(option.url).then(function (data) {
@@ -211,8 +220,16 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 			$("#" + this.option.elem).removeClass("pear-nav-mini");
 			$("#" + this.option.elem).animate({
 				width: "220px"
-			}, 150);
-			isHoverMenu(false, config);
+			}, 180);
+			var that = this;
+			$("#" + this.option.elem)
+				.promise()
+				.done(function () {
+					isHoverMenu(false, config);
+					if (that.option.control) {
+						rationalizeHeaderControlWidth(that.option);
+					}
+				})
 		} else {
 			activeMenus = $("#" + this.option.elem).find(".layui-nav-itemed>a");
 			$("#" + this.option.elem).find(".layui-nav-itemed").removeClass("layui-nav-itemed");
@@ -220,10 +237,15 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 			$("#" + this.option.elem).animate({
 				width: "60px"
 			}, 400);
-			// 使菜单在折叠动画过程中不触发 hover
-			setTimeout(function () {
-				isHoverMenu(true, config);
-			}, 100);
+			var that = this;
+			$("#" + this.option.elem)
+				.promise()
+				.done(function () {
+					isHoverMenu(true, config);
+					if (that.option.control) {
+						rationalizeHeaderControlWidth(that.option);
+					}
+				})
 		}
 	}
 
@@ -288,7 +310,7 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 					'" menu-title="' + item.title + '"  href="' + href + '"  ' + target + '><i class="' + item.icon +
 					'"></i><span>' + item.title + '</span></a>';
 			}
-			// 调 用 递 归 方 法 加 载 无 限 层 级 的 子 菜 单 
+			// 调 用 递 归 方 法 加 载 无 限 层 级 的 子 菜 单
 			content += loadchild(item);
 			// 结 束 一 个 根 菜 单 项
 			content += '</li>';
@@ -391,7 +413,7 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 		}
 		// 创 建 子 菜 单 结 构
 		var content = '<dl class="layui-nav-child">';
-		// 如 果 嵌 套 不 等 于 空 
+		// 如 果 嵌 套 不 等 于 空
 		if (obj.children != null && obj.children.length > 0) {
 			// 遍 历 子 项 目
 			$.each(obj.children, function (i, note) {
@@ -518,6 +540,27 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 			$("#" + option.elem + " .layui-nav-item").off('mouseenter').unbind('mouseleave');
 			$("#" + option.elem + " dd").off('mouseenter').unbind('mouseleave');
 		}
+	}
+
+	function rationalizeHeaderControlWidth(option) {
+		var $headerControl = $(".layui-layout-control");
+		var $headerRight = $(".layui-layout-right");
+		var rationalizeWidth = $headerRight.position().left - $headerControl.position().left;
+		if (option.controlWidth && rationalizeWidth >= option.controlWidth) {
+			rationalizeWidth = option.controlWidth;
+		}
+		$(".layui-layout-control .control").css({ "width": rationalizeWidth, "transition": "width .15s"});
+
+	}
+
+	function rationalizeHeaderControlWidthAuto(option){
+		$(window).on('resize', function () {
+			rationalizeHeaderControlWidth(option);
+		})
+
+		$(document).ready(function () {
+			rationalizeHeaderControlWidth(option);
+		});
 	}
 	exports(MOD_NAME, new pearMenu());
 })
