@@ -9,7 +9,7 @@
 /// <reference path="Layui.d.ts" />
 
 interface Window {
-    layui: Layui;
-    lay: Layui.Lay;
-    layer: Layui.Layer;
+  layui: Layui;
+  lay: Layui.Lay;
+  layer: Layui.Layer;
 }

@@ -12,6 +12,7 @@
 .pear-drawer.layui-layer.position-absolute {
 	position: absolute !important;
 }
+
 .pear-drawer-anim,
 .pear-drawer-anim.layui-anim {
 	-webkit-animation-duration: .3s;

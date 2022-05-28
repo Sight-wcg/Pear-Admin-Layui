@@ -16,7 +16,7 @@ interface ButtonLoadOptions {
   /**
    * 可选，加载完成时的回调函数
    */
-  done?:() => void;
+  done?: () => void;
 }
 
 /**

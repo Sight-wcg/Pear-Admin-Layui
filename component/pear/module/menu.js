@@ -31,7 +31,7 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 		}
 
 		var tempDone = option.done;
-		option.done = function(){
+		option.done = function () {
 			if (option.control) {
 				rationalizeHeaderControlWidthAuto(option);
 			}
@@ -84,7 +84,7 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 			});
 		}, 1000)
 
-    return new pearMenu(option);
+		return new pearMenu(option);
 	}
 
 	pearMenu.prototype.click = function (clickEvent) {
@@ -549,11 +549,11 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 		if (option.controlWidth && rationalizeWidth >= option.controlWidth) {
 			rationalizeWidth = option.controlWidth;
 		}
-		$(".layui-layout-control .control").css({ "width": rationalizeWidth, "transition": "width .15s"});
+		$(".layui-layout-control .control").css({ "width": rationalizeWidth, "transition": "width .15s" });
 
 	}
 
-	function rationalizeHeaderControlWidthAuto(option){
+	function rationalizeHeaderControlWidthAuto(option) {
 		$(window).on('resize', function () {
 			rationalizeHeaderControlWidth(option);
 		})

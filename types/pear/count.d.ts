@@ -1,7 +1,7 @@
 /**
  * CountUp 选项
  */
-interface CountUpOptions{
+interface CountUpOptions {
   /**
    * 持续时长
    */

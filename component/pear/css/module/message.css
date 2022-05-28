@@ -4,7 +4,7 @@
 }
 
 .pear-notice {
-	box-shadow: 0 6px 16px -8px rgb(0 0 0 / 8%), 0 9px 28px 0 rgb(0 0 0 / 5%), 0 12px 48px 16px rgb(0 0 0 / 3%)!important;
+	box-shadow: 0 6px 16px -8px rgb(0 0 0 / 8%), 0 9px 28px 0 rgb(0 0 0 / 5%), 0 12px 48px 16px rgb(0 0 0 / 3%) !important;
 }
 
 .pear-notice .layui-tab-title {
@@ -21,7 +21,7 @@
 
 /*排除最后一个 li 右边框*/
 .pear-notice .layui-tab-title li:last-child {
-    border-right: none;
+	border-right: none;
 }
 
 .pear-notice * {
@@ -49,12 +49,13 @@
 	padding-top: 10px;
 	padding-bottom: 15px;
 }
+
 .pear-notice-end {
 	float: right;
 	right: 10px;
 }
 
-.pear-notice-item span{
+.pear-notice-item span {
 	height: 40px;
 	line-height: 40px;
 }

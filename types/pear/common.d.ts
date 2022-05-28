@@ -1,7 +1,7 @@
 /**
  * pear 公共组件
  */
-interface Common{
+interface Common {
   /**
    * 获取表格选中字段
    * @param obj 表格回调参数
@@ -22,5 +22,5 @@ interface Common{
    * @param table 刷新父级表
    * @param callback 请求成功回调
    */
-  submit(data: object, href: string, table: any, callback:(result: object) => void)
+  submit(data: object, href: string, table: any, callback: (result: object) => void)
 }

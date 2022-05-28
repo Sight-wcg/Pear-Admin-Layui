@@ -74,20 +74,22 @@
 }
 
 .cloud-card-component .layui-table-click {
-	border-radius: 6px!important;
+	border-radius: 6px !important;
 }
 
 .ew-table-loading {
-    padding: 10px 0;
-    text-align: center;
+	padding: 10px 0;
+	text-align: center;
 }
-.ew-table-loading > i {
-    color: #999;
-    font-size: 30px;
+
+.ew-table-loading>i {
+	color: #999;
+	font-size: 30px;
 }
+
 .ew-table-loading.ew-loading-float {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
 }

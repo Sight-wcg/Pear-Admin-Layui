@@ -1,8 +1,9 @@
 @font-face {
-  font-family: "pear-icon"; /* Project id 2654996 */
+  font-family: "pear-icon";
+  /* Project id 2654996 */
   src: url('iconfont.woff2?t=1625555217253') format('woff2'),
-       url('iconfont.woff?t=1625555217253') format('woff'),
-       url('iconfont.ttf?t=1625555217253') format('truetype');
+    url('iconfont.woff?t=1625555217253') format('woff'),
+    url('iconfont.ttf?t=1625555217253') format('truetype');
 }
 
 .pear-icon {
@@ -576,4 +577,3 @@
 .pear-icon-direction-left:before {
   content: "\e68c";
 }
-

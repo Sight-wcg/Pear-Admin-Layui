@@ -1,10 +1,10 @@
-layui.define(['layer', 'form'], function(exports) {
+layui.define(['layer', 'form'], function (exports) {
 	var layer = layui.layer,
 		form = layui.form,
 		$ = layui.$,
 		key = '';
 	delHtml()
-	$('button').on('click', function() {
+	$('button').on('click', function () {
 		var _this = $(this),
 			size = _this.data('size'),
 			type = _this.data('type'),
@@ -174,7 +174,7 @@ layui.define(['layer', 'form'], function(exports) {
 	}
 	var jscodehtml = jscode();
 	$('.js-show').text(jscodehtml)
-	form.on('submit(formDemo)', function(data) {
+	form.on('submit(formDemo)', function (data) {
 		layer.msg(JSON.stringify(data.field));
 		return false;
 	});

@@ -21,7 +21,7 @@ interface Options {
   title?: string | false | [string, string] | undefined
   /**
    * 内容
-   * @deprecated 
+   * @deprecated
    * @see content
    */
   dom?: HTMLElement
@@ -57,10 +57,10 @@ interface Options {
    */
   direction?: string
   /**
-   * 抽屉打开方向 l = 左, r = 右, t = 上, b = 下 
+   * 抽屉打开方向 l = 左, r = 右, t = 上, b = 下
    * @default 'r'
    * @example
-   * 'r'  
+   * 'r'
    */
   offset?: string | [string, string] | undefined
   /**
@@ -204,7 +204,7 @@ interface Options {
 /**
  * 抽屉组件
  */
-interface Drawer{
+interface Drawer {
   /**
    * 打开一个抽屉
    * @param options

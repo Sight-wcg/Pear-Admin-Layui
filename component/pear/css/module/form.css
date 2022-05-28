@@ -1,42 +1,42 @@
-.layui-card-body .layui-form{
+.layui-card-body .layui-form {
 	margin-top: 15px;
 }
 
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-  color: #ccc;
+	color: #ccc;
 }
 
 .layui-input:hover,
 .layui-textarea:hover,
 .layui-input:focus,
 .layui-textarea:focus {
-  border-color: #eee;
+	border-color: #eee;
 }
 
 .layui-input:focus,
 .layui-textarea:focus {
-  border-color: #5FB878 !important;
-  box-shadow: 0 0 0 3px #f0f9eb !important;
+	border-color: #5FB878 !important;
+	box-shadow: 0 0 0 3px #f0f9eb !important;
 }
 
 .layui-input[success] {
 	box-shadow: 0px 0px 0px 3px #f0f9eb !important;
-	border: #5FB878 1px solid!important;
+	border: #5FB878 1px solid !important;
 }
 
 .layui-input[failure],
 .layui-form-item .layui-form-danger:focus {
-    box-shadow: 0px 0px 0px 3px #fef0f0 !important;
-    border: #F56C6C 1px solid!important;
+	box-shadow: 0px 0px 0px 3px #fef0f0 !important;
+	border: #F56C6C 1px solid !important;
 }
 
 .layui-input,
 .layui-select,
 .layui-textarea {
-  border-radius: 4px;
-  border-color: #eee;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	border-radius: 4px;
+	border-color: #eee;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .layui-form-select dl::-webkit-scrollbar {
@@ -68,7 +68,7 @@ textarea::-webkit-input-placeholder {
 }
 
 /* layui 2.6.9 样式变化 */
-.layui-form-select dl dd.layui-this{
-  background-color: #F6F6F6;
+.layui-form-select dl dd.layui-this {
+	background-color: #F6F6F6;
 	font-weight: 700;
 }

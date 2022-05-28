@@ -1,15 +1,15 @@
-layui.define(['jquery', 'element'], function(exports) {
+layui.define(['jquery', 'element'], function (exports) {
 	"use strict";
 
 	var MOD_NAME = 'yaml',
 		$ = layui.jquery,
 		element = layui.element;
 
-	var yaml = new function() {
-		this.parse = function(str){
+	var yaml = new function () {
+		this.parse = function (str) {
 			return YAML.parse(yamlString);
 		}
-		this.load = function(path){
+		this.load = function (path) {
 			return YAML.load(path);
 		}
 	}
@@ -17,7 +17,7 @@ layui.define(['jquery', 'element'], function(exports) {
 });
 
 
-(function() {
+(function () {
 	function r(e, n, t) {
 		function o(i, f) {
 			if (!n[i]) {
@@ -31,7 +31,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				var p = n[i] = {
 					exports: {}
 				};
-				e[i][0].call(p.exports, function(r) {
+				e[i][0].call(p.exports, function (r) {
 					var n = e[i][1][r];
 					return o(n || r)
 				}, p, p.exports, r, e, n, t)
@@ -43,19 +43,19 @@ layui.define(['jquery', 'element'], function(exports) {
 	}
 	return r
 })()({
-	1: [function(require, module, exports) {
+	1: [function (require, module, exports) {
 		var Dumper, Inline, Utils;
 
 		Utils = require('./Utils');
 
 		Inline = require('./Inline');
 
-		Dumper = (function() {
-			function Dumper() {}
+		Dumper = (function () {
+			function Dumper() { }
 
 			Dumper.indentation = 4;
 
-			Dumper.prototype.dump = function(input, inline, indent, exceptionOnInvalidType, objectEncoder) {
+			Dumper.prototype.dump = function (input, inline, indent, exceptionOnInvalidType, objectEncoder) {
 				var i, key, len, output, prefix, value, willBeInlined;
 				if (inline == null) {
 					inline = 0;
@@ -90,7 +90,7 @@ layui.define(['jquery', 'element'], function(exports) {
 							willBeInlined = inline - 1 <= 0 || typeof value !== 'object' || Utils.isEmpty(value);
 							output += prefix + Inline.dump(key, exceptionOnInvalidType, objectEncoder) + ':' + (willBeInlined ? ' ' :
 								"\n") + this.dump(value, inline - 1, (willBeInlined ? 0 : indent + this.indentation),
-								exceptionOnInvalidType, objectEncoder) + (willBeInlined ? "\n" : '');
+									exceptionOnInvalidType, objectEncoder) + (willBeInlined ? "\n" : '');
 						}
 					}
 				}
@@ -108,20 +108,20 @@ layui.define(['jquery', 'element'], function(exports) {
 		"./Inline": 6,
 		"./Utils": 10
 	}],
-	2: [function(require, module, exports) {
+	2: [function (require, module, exports) {
 		var Escaper, Pattern;
 
 		Pattern = require('./Pattern');
 
-		Escaper = (function() {
+		Escaper = (function () {
 			var ch;
 
-			function Escaper() {}
+			function Escaper() { }
 
 			Escaper.LIST_ESCAPEES = ['\\', '\\\\', '\\"', '"', "\x00", "\x01", "\x02", "\x03", "\x04", "\x05", "\x06",
 				"\x07", "\x08", "\x09", "\x0a", "\x0b", "\x0c", "\x0d", "\x0e", "\x0f", "\x10", "\x11", "\x12", "\x13",
 				"\x14", "\x15", "\x16", "\x17", "\x18", "\x19", "\x1a", "\x1b", "\x1c", "\x1d", "\x1e", "\x1f", (ch = String.fromCharCode)
-				(0x0085), ch(0x00A0), ch(0x2028), ch(0x2029)
+					(0x0085), ch(0x00A0), ch(0x2028), ch(0x2029)
 			];
 
 			Escaper.LIST_ESCAPED = ['\\\\', '\\"', '\\"', '\\"', "\\0", "\\x01", "\\x02", "\\x03", "\\x04", "\\x05",
@@ -130,7 +130,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				"\\x1f", "\\N", "\\_", "\\L", "\\P"
 			];
 
-			Escaper.MAPPING_ESCAPEES_TO_ESCAPED = (function() {
+			Escaper.MAPPING_ESCAPEES_TO_ESCAPED = (function () {
 				var i, j, mapping, ref;
 				mapping = {};
 				for (i = j = 0, ref = Escaper.LIST_ESCAPEES.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
@@ -145,25 +145,25 @@ layui.define(['jquery', 'element'], function(exports) {
 
 			Escaper.PATTERN_SINGLE_QUOTING = new Pattern('[\\s\'":{}[\\],&*#?]|^[-?|<>=!%@`]');
 
-			Escaper.requiresDoubleQuoting = function(value) {
+			Escaper.requiresDoubleQuoting = function (value) {
 				return this.PATTERN_CHARACTERS_TO_ESCAPE.test(value);
 			};
 
-			Escaper.escapeWithDoubleQuotes = function(value) {
+			Escaper.escapeWithDoubleQuotes = function (value) {
 				var result;
-				result = this.PATTERN_MAPPING_ESCAPEES.replace(value, (function(_this) {
-					return function(str) {
+				result = this.PATTERN_MAPPING_ESCAPEES.replace(value, (function (_this) {
+					return function (str) {
 						return _this.MAPPING_ESCAPEES_TO_ESCAPED[str];
 					};
 				})(this));
 				return '"' + result + '"';
 			};
 
-			Escaper.requiresSingleQuoting = function(value) {
+			Escaper.requiresSingleQuoting = function (value) {
 				return this.PATTERN_SINGLE_QUOTING.test(value);
 			};
 
-			Escaper.escapeWithSingleQuotes = function(value) {
+			Escaper.escapeWithSingleQuotes = function (value) {
 				return "'" + value.replace(/'/g, "''") + "'";
 			};
 
@@ -177,9 +177,9 @@ layui.define(['jquery', 'element'], function(exports) {
 	}, {
 		"./Pattern": 8
 	}],
-	3: [function(require, module, exports) {
+	3: [function (require, module, exports) {
 		var DumpException,
-			extend = function(child, parent) {
+			extend = function (child, parent) {
 				for (var key in parent) {
 					if (hasProp.call(parent, key)) child[key] = parent[key];
 				}
@@ -194,7 +194,7 @@ layui.define(['jquery', 'element'], function(exports) {
 			},
 			hasProp = {}.hasOwnProperty;
 
-		DumpException = (function(superClass) {
+		DumpException = (function (superClass) {
 			extend(DumpException, superClass);
 
 			function DumpException(message, parsedLine, snippet) {
@@ -204,7 +204,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				this.snippet = snippet;
 			}
 
-			DumpException.prototype.toString = function() {
+			DumpException.prototype.toString = function () {
 				if ((this.parsedLine != null) && (this.snippet != null)) {
 					return '<DumpException> ' + this.message + ' (line ' + this.parsedLine + ': \'' + this.snippet + '\')';
 				} else {
@@ -220,9 +220,9 @@ layui.define(['jquery', 'element'], function(exports) {
 
 
 	}, {}],
-	4: [function(require, module, exports) {
+	4: [function (require, module, exports) {
 		var ParseException,
-			extend = function(child, parent) {
+			extend = function (child, parent) {
 				for (var key in parent) {
 					if (hasProp.call(parent, key)) child[key] = parent[key];
 				}
@@ -237,7 +237,7 @@ layui.define(['jquery', 'element'], function(exports) {
 			},
 			hasProp = {}.hasOwnProperty;
 
-		ParseException = (function(superClass) {
+		ParseException = (function (superClass) {
 			extend(ParseException, superClass);
 
 			function ParseException(message, parsedLine, snippet) {
@@ -247,7 +247,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				this.snippet = snippet;
 			}
 
-			ParseException.prototype.toString = function() {
+			ParseException.prototype.toString = function () {
 				if ((this.parsedLine != null) && (this.snippet != null)) {
 					return '<ParseException> ' + this.message + ' (line ' + this.parsedLine + ': \'' + this.snippet + '\')';
 				} else {
@@ -263,9 +263,9 @@ layui.define(['jquery', 'element'], function(exports) {
 
 
 	}, {}],
-	5: [function(require, module, exports) {
+	5: [function (require, module, exports) {
 		var ParseMore,
-			extend = function(child, parent) {
+			extend = function (child, parent) {
 				for (var key in parent) {
 					if (hasProp.call(parent, key)) child[key] = parent[key];
 				}
@@ -280,7 +280,7 @@ layui.define(['jquery', 'element'], function(exports) {
 			},
 			hasProp = {}.hasOwnProperty;
 
-		ParseMore = (function(superClass) {
+		ParseMore = (function (superClass) {
 			extend(ParseMore, superClass);
 
 			function ParseMore(message, parsedLine, snippet) {
@@ -290,7 +290,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				this.snippet = snippet;
 			}
 
-			ParseMore.prototype.toString = function() {
+			ParseMore.prototype.toString = function () {
 				if ((this.parsedLine != null) && (this.snippet != null)) {
 					return '<ParseMore> ' + this.message + ' (line ' + this.parsedLine + ': \'' + this.snippet + '\')';
 				} else {
@@ -306,9 +306,9 @@ layui.define(['jquery', 'element'], function(exports) {
 
 
 	}, {}],
-	6: [function(require, module, exports) {
+	6: [function (require, module, exports) {
 		var DumpException, Escaper, Inline, ParseException, ParseMore, Pattern, Unescaper, Utils,
-			indexOf = [].indexOf || function(item) {
+			indexOf = [].indexOf || function (item) {
 				for (var i = 0, l = this.length; i < l; i++) {
 					if (i in this && this[i] === item) return i;
 				}
@@ -329,8 +329,8 @@ layui.define(['jquery', 'element'], function(exports) {
 
 		DumpException = require('./Exception/DumpException');
 
-		Inline = (function() {
-			function Inline() {}
+		Inline = (function () {
+			function Inline() { }
 
 			Inline.REGEX_QUOTED_STRING = '(?:"(?:[^"\\\\]*(?:\\\\.[^"\\\\]*)*)"|\'(?:[^\']*(?:\'\'[^\']*)*)\')';
 
@@ -344,7 +344,7 @@ layui.define(['jquery', 'element'], function(exports) {
 
 			Inline.settings = {};
 
-			Inline.configure = function(exceptionOnInvalidType, objectDecoder) {
+			Inline.configure = function (exceptionOnInvalidType, objectDecoder) {
 				if (exceptionOnInvalidType == null) {
 					exceptionOnInvalidType = null;
 				}
@@ -355,7 +355,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				this.settings.objectDecoder = objectDecoder;
 			};
 
-			Inline.parse = function(value, exceptionOnInvalidType, objectDecoder) {
+			Inline.parse = function (value, exceptionOnInvalidType, objectDecoder) {
 				var context, result;
 				if (exceptionOnInvalidType == null) {
 					exceptionOnInvalidType = false;
@@ -395,7 +395,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return result;
 			};
 
-			Inline.dump = function(value, exceptionOnInvalidType, objectEncoder) {
+			Inline.dump = function (value, exceptionOnInvalidType, objectEncoder) {
 				var ref, result, type;
 				if (exceptionOnInvalidType == null) {
 					exceptionOnInvalidType = false;
@@ -448,7 +448,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return value;
 			};
 
-			Inline.dumpObject = function(value, exceptionOnInvalidType, objectSupport) {
+			Inline.dumpObject = function (value, exceptionOnInvalidType, objectSupport) {
 				var j, key, len1, output, val;
 				if (objectSupport == null) {
 					objectSupport = null;
@@ -470,7 +470,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				}
 			};
 
-			Inline.parseScalar = function(scalar, delimiters, stringDelimiters, context, evaluate) {
+			Inline.parseScalar = function (scalar, delimiters, stringDelimiters, context, evaluate) {
 				var i, joinedDelimiters, match, output, pattern, ref, ref1, strpos, tmp;
 				if (delimiters == null) {
 					delimiters = null;
@@ -531,7 +531,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return output;
 			};
 
-			Inline.parseQuotedScalar = function(scalar, context) {
+			Inline.parseQuotedScalar = function (scalar, context) {
 				var i, match, output;
 				i = context.i;
 				if (!(match = this.PATTERN_QUOTED_SCALAR.exec(scalar.slice(i)))) {
@@ -548,7 +548,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return output;
 			};
 
-			Inline.parseSequence = function(sequence, context) {
+			Inline.parseSequence = function (sequence, context) {
 				var e, error, i, isQuoted, len, output, ref, value;
 				output = [];
 				len = sequence.length;
@@ -590,7 +590,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				throw new ParseMore('Malformed inline YAML string ' + sequence);
 			};
 
-			Inline.parseMapping = function(mapping, context) {
+			Inline.parseMapping = function (mapping, context) {
 				var done, i, key, len, output, shouldContinueWhileLoop, value;
 				output = {};
 				len = mapping.length;
@@ -658,7 +658,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				throw new ParseMore('Malformed inline YAML string ' + mapping);
 			};
 
-			Inline.evaluateScalar = function(scalar, context) {
+			Inline.evaluateScalar = function (scalar, context) {
 				var cast, date, exceptionOnInvalidType, firstChar, firstSpace, firstWord, objectDecoder, raw, scalarLower,
 					subValue, trimmedScalar;
 				scalar = Utils.trim(scalar);
@@ -808,7 +808,7 @@ layui.define(['jquery', 'element'], function(exports) {
 		"./Unescaper": 9,
 		"./Utils": 10
 	}],
-	7: [function(require, module, exports) {
+	7: [function (require, module, exports) {
 		var Inline, ParseException, ParseMore, Parser, Pattern, Utils;
 
 		Inline = require('./Inline');
@@ -821,7 +821,7 @@ layui.define(['jquery', 'element'], function(exports) {
 
 		ParseMore = require('./Exception/ParseMore');
 
-		Parser = (function() {
+		Parser = (function () {
 			Parser.prototype.PATTERN_FOLDED_SCALAR_ALL = new Pattern(
 				'^(?:(?<type>![^\\|>]*)\\s+)?(?<separator>\\||>)(?<modifiers>\\+|\\-|\\d+|\\+\\d+|\\-\\d+|\\d+\\+|\\d+\\-)?(?<comments> +#.*)?$'
 			);
@@ -869,7 +869,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				this.refs = {};
 			}
 
-			Parser.prototype.parse = function(value, exceptionOnInvalidType, objectDecoder) {
+			Parser.prototype.parse = function (value, exceptionOnInvalidType, objectDecoder) {
 				var alias, allowOverwrite, block, c, context, data, e, error, error1, error2, first, i, indent, isRef, j, k,
 					key, l, lastKey, len, len1, len2, len3, lineCount, m, matches, mergeNode, n, name, parsed, parsedItem,
 					parser, ref, ref1, ref2, refName, refValue, val, values;
@@ -907,7 +907,7 @@ layui.define(['jquery', 'element'], function(exports) {
 							values.value = matches.value;
 						}
 						if (!(values.value != null) || '' === Utils.trim(values.value, ' ') || Utils.ltrim(values.value, ' ').indexOf(
-								'#') === 0) {
+							'#') === 0) {
 							if (this.currentLineNb < this.lines.length - 1 && !this.isNextLineUnIndentedCollection()) {
 								c = this.getRealCurrentLineNb() + 1;
 								parser = new Parser(c);
@@ -918,7 +918,7 @@ layui.define(['jquery', 'element'], function(exports) {
 							}
 						} else {
 							if (((ref = values.leadspaces) != null ? ref.length : void 0) && (matches = this.PATTERN_COMPACT_NOTATION.exec(
-									values.value))) {
+								values.value))) {
 								c = this.getRealCurrentLineNb();
 								parser = new Parser(c);
 								parser.refs = this.refs;
@@ -1112,15 +1112,15 @@ layui.define(['jquery', 'element'], function(exports) {
 				}
 			};
 
-			Parser.prototype.getRealCurrentLineNb = function() {
+			Parser.prototype.getRealCurrentLineNb = function () {
 				return this.currentLineNb + this.offset;
 			};
 
-			Parser.prototype.getCurrentLineIndentation = function() {
+			Parser.prototype.getCurrentLineIndentation = function () {
 				return this.currentLine.length - Utils.ltrim(this.currentLine, ' ').length;
 			};
 
-			Parser.prototype.getNextEmbedBlock = function(indentation, includeUnindentedCollection) {
+			Parser.prototype.getNextEmbedBlock = function (indentation, includeUnindentedCollection) {
 				var data, indent, isItUnindentedCollection, newIndent, removeComments, removeCommentsPattern,
 					unindentedEmbedBlock;
 				if (indentation == null) {
@@ -1176,7 +1176,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return data.join("\n");
 			};
 
-			Parser.prototype.moveToNextLine = function() {
+			Parser.prototype.moveToNextLine = function () {
 				if (this.currentLineNb >= this.lines.length - 1) {
 					return false;
 				}
@@ -1184,11 +1184,11 @@ layui.define(['jquery', 'element'], function(exports) {
 				return true;
 			};
 
-			Parser.prototype.moveToPreviousLine = function() {
+			Parser.prototype.moveToPreviousLine = function () {
 				this.currentLine = this.lines[--this.currentLineNb];
 			};
 
-			Parser.prototype.parseValue = function(value, exceptionOnInvalidType, objectDecoder) {
+			Parser.prototype.parseValue = function (value, exceptionOnInvalidType, objectDecoder) {
 				var e, error, foldedIndent, matches, modifiers, pos, ref, ref1, val;
 				if (0 === value.indexOf('*')) {
 					pos = value.indexOf('#');
@@ -1239,7 +1239,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				}
 			};
 
-			Parser.prototype.parseFoldedScalar = function(separator, indicator, indentation) {
+			Parser.prototype.parseFoldedScalar = function (separator, indicator, indentation) {
 				var isCurrentLineBlank, j, len, line, matches, newText, notEOF, pattern, ref, text;
 				if (indicator == null) {
 					indicator = '';
@@ -1311,7 +1311,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return text;
 			};
 
-			Parser.prototype.isNextLineIndented = function(ignoreComments) {
+			Parser.prototype.isNextLineIndented = function (ignoreComments) {
 				var EOF, currentIndentation, ret;
 				if (ignoreComments == null) {
 					ignoreComments = true;
@@ -1338,23 +1338,23 @@ layui.define(['jquery', 'element'], function(exports) {
 				return ret;
 			};
 
-			Parser.prototype.isCurrentLineEmpty = function() {
+			Parser.prototype.isCurrentLineEmpty = function () {
 				var trimmedLine;
 				trimmedLine = Utils.trim(this.currentLine, ' ');
 				return trimmedLine.length === 0 || trimmedLine.charAt(0) === '#';
 			};
 
-			Parser.prototype.isCurrentLineBlank = function() {
+			Parser.prototype.isCurrentLineBlank = function () {
 				return '' === Utils.trim(this.currentLine, ' ');
 			};
 
-			Parser.prototype.isCurrentLineComment = function() {
+			Parser.prototype.isCurrentLineComment = function () {
 				var ltrimmedLine;
 				ltrimmedLine = Utils.ltrim(this.currentLine, ' ');
 				return ltrimmedLine.charAt(0) === '#';
 			};
 
-			Parser.prototype.cleanup = function(value) {
+			Parser.prototype.cleanup = function (value) {
 				var count, i, indent, j, l, len, len1, line, lines, ref, ref1, ref2, smallestIndent, trimmedValue;
 				if (value.indexOf("\r") !== -1) {
 					value = value.split("\r\n").join("\n").split("\r").join("\n");
@@ -1395,7 +1395,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return value;
 			};
 
-			Parser.prototype.isNextLineUnIndentedCollection = function(currentIndentation) {
+			Parser.prototype.isNextLineUnIndentedCollection = function (currentIndentation) {
 				var notEOF, ret;
 				if (currentIndentation == null) {
 					currentIndentation = null;
@@ -1418,7 +1418,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return ret;
 			};
 
-			Parser.prototype.isStringUnIndentedCollectionItem = function() {
+			Parser.prototype.isStringUnIndentedCollectionItem = function () {
 				return this.currentLine === '-' || this.currentLine.slice(0, 2) === '- ';
 			};
 
@@ -1436,10 +1436,10 @@ layui.define(['jquery', 'element'], function(exports) {
 		"./Pattern": 8,
 		"./Utils": 10
 	}],
-	8: [function(require, module, exports) {
+	8: [function (require, module, exports) {
 		var Pattern;
 
-		Pattern = (function() {
+		Pattern = (function () {
 			Pattern.prototype.regex = null;
 
 			Pattern.prototype.rawRegex = null;
@@ -1508,7 +1508,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				this.mapping = mapping;
 			}
 
-			Pattern.prototype.exec = function(str) {
+			Pattern.prototype.exec = function (str) {
 				var index, matches, name, ref;
 				this.regex.lastIndex = 0;
 				matches = this.regex.exec(str);
@@ -1525,17 +1525,17 @@ layui.define(['jquery', 'element'], function(exports) {
 				return matches;
 			};
 
-			Pattern.prototype.test = function(str) {
+			Pattern.prototype.test = function (str) {
 				this.regex.lastIndex = 0;
 				return this.regex.test(str);
 			};
 
-			Pattern.prototype.replace = function(str, replacement) {
+			Pattern.prototype.replace = function (str, replacement) {
 				this.regex.lastIndex = 0;
 				return str.replace(this.regex, replacement);
 			};
 
-			Pattern.prototype.replaceAll = function(str, replacement, limit) {
+			Pattern.prototype.replaceAll = function (str, replacement, limit) {
 				var count;
 				if (limit == null) {
 					limit = 0;
@@ -1558,27 +1558,27 @@ layui.define(['jquery', 'element'], function(exports) {
 
 
 	}, {}],
-	9: [function(require, module, exports) {
+	9: [function (require, module, exports) {
 		var Pattern, Unescaper, Utils;
 
 		Utils = require('./Utils');
 
 		Pattern = require('./Pattern');
 
-		Unescaper = (function() {
-			function Unescaper() {}
+		Unescaper = (function () {
+			function Unescaper() { }
 
 			Unescaper.PATTERN_ESCAPED_CHARACTER = new Pattern(
 				'\\\\([0abt\tnvfre "\\/\\\\N_LP]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8})');
 
-			Unescaper.unescapeSingleQuotedString = function(value) {
+			Unescaper.unescapeSingleQuotedString = function (value) {
 				return value.replace(/\'\'/g, '\'');
 			};
 
-			Unescaper.unescapeDoubleQuotedString = function(value) {
+			Unescaper.unescapeDoubleQuotedString = function (value) {
 				if (this._unescapeCallback == null) {
-					this._unescapeCallback = (function(_this) {
-						return function(str) {
+					this._unescapeCallback = (function (_this) {
+						return function (str) {
 							return _this.unescapeCharacter(str);
 						};
 					})(this);
@@ -1586,7 +1586,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return this.PATTERN_ESCAPED_CHARACTER.replace(value, this._unescapeCallback);
 			};
 
-			Unescaper.unescapeCharacter = function(value) {
+			Unescaper.unescapeCharacter = function (value) {
 				var ch;
 				ch = String.fromCharCode;
 				switch (value.charAt(1)) {
@@ -1648,14 +1648,14 @@ layui.define(['jquery', 'element'], function(exports) {
 		"./Pattern": 8,
 		"./Utils": 10
 	}],
-	10: [function(require, module, exports) {
+	10: [function (require, module, exports) {
 		var Pattern, Utils,
 			hasProp = {}.hasOwnProperty;
 
 		Pattern = require('./Pattern');
 
-		Utils = (function() {
-			function Utils() {}
+		Utils = (function () {
+			function Utils() { }
 
 			Utils.REGEX_LEFT_TRIM_BY_CHAR = {};
 
@@ -1677,7 +1677,7 @@ layui.define(['jquery', 'element'], function(exports) {
 
 			Utils.LOCAL_TIMEZONE_OFFSET = new Date().getTimezoneOffset() * 60 * 1000;
 
-			Utils.trim = function(str, _char) {
+			Utils.trim = function (str, _char) {
 				var regexLeft, regexRight;
 				if (_char == null) {
 					_char = '\\s';
@@ -1695,7 +1695,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return str.replace(regexLeft, '').replace(regexRight, '');
 			};
 
-			Utils.ltrim = function(str, _char) {
+			Utils.ltrim = function (str, _char) {
 				var regexLeft;
 				if (_char == null) {
 					_char = '\\s';
@@ -1708,7 +1708,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return str.replace(regexLeft, '');
 			};
 
-			Utils.rtrim = function(str, _char) {
+			Utils.rtrim = function (str, _char) {
 				var regexRight;
 				if (_char == null) {
 					_char = '\\s';
@@ -1721,14 +1721,14 @@ layui.define(['jquery', 'element'], function(exports) {
 				return str.replace(regexRight, '');
 			};
 
-			Utils.isEmpty = function(value) {
+			Utils.isEmpty = function (value) {
 				return !value || value === '' || value === '0' || (value instanceof Array && value.length === 0) || this.isEmptyObject(
 					value);
 			};
 
-			Utils.isEmptyObject = function(value) {
+			Utils.isEmptyObject = function (value) {
 				var k;
-				return value instanceof Object && ((function() {
+				return value instanceof Object && ((function () {
 					var results;
 					results = [];
 					for (k in value) {
@@ -1739,7 +1739,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				})()).length === 0;
 			};
 
-			Utils.subStrCount = function(string, subString, start, length) {
+			Utils.subStrCount = function (string, subString, start, length) {
 				var c, i, j, len, ref, sublen;
 				c = 0;
 				string = '' + string;
@@ -1761,17 +1761,17 @@ layui.define(['jquery', 'element'], function(exports) {
 				return c;
 			};
 
-			Utils.isDigits = function(input) {
+			Utils.isDigits = function (input) {
 				this.REGEX_DIGITS.lastIndex = 0;
 				return this.REGEX_DIGITS.test(input);
 			};
 
-			Utils.octDec = function(input) {
+			Utils.octDec = function (input) {
 				this.REGEX_OCTAL.lastIndex = 0;
 				return parseInt((input + '').replace(this.REGEX_OCTAL, ''), 8);
 			};
 
-			Utils.hexDec = function(input) {
+			Utils.hexDec = function (input) {
 				this.REGEX_HEXADECIMAL.lastIndex = 0;
 				input = this.trim(input);
 				if ((input + '').slice(0, 2) === '0x') {
@@ -1780,7 +1780,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return parseInt((input + '').replace(this.REGEX_HEXADECIMAL, ''), 16);
 			};
 
-			Utils.utf8chr = function(c) {
+			Utils.utf8chr = function (c) {
 				var ch;
 				ch = String.fromCharCode;
 				if (0x80 > (c %= 0x200000)) {
@@ -1795,7 +1795,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return ch(0xF0 | c >> 18) + ch(0x80 | c >> 12 & 0x3F) + ch(0x80 | c >> 6 & 0x3F) + ch(0x80 | c & 0x3F);
 			};
 
-			Utils.parseBoolean = function(input, strict) {
+			Utils.parseBoolean = function (input, strict) {
 				var lowerInput;
 				if (strict == null) {
 					strict = true;
@@ -1821,13 +1821,13 @@ layui.define(['jquery', 'element'], function(exports) {
 				return !!input;
 			};
 
-			Utils.isNumeric = function(input) {
+			Utils.isNumeric = function (input) {
 				this.REGEX_SPACES.lastIndex = 0;
 				return typeof input === 'number' || typeof input === 'string' && !isNaN(input) && input.replace(this.REGEX_SPACES,
 					'') !== '';
 			};
 
-			Utils.stringToDate = function(str) {
+			Utils.stringToDate = function (str) {
 				var date, day, fraction, hour, info, minute, month, second, tz_hour, tz_minute, tz_offset, year;
 				if (!(str != null ? str.length : void 0)) {
 					return null;
@@ -1874,7 +1874,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return date;
 			};
 
-			Utils.strRepeat = function(str, number) {
+			Utils.strRepeat = function (str, number) {
 				var i, res;
 				res = '';
 				i = 0;
@@ -1885,7 +1885,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return res;
 			};
 
-			Utils.getStringFromFile = function(path, callback) {
+			Utils.getStringFromFile = function (path, callback) {
 				var data, fs, j, len1, name, ref, req, xhr;
 				if (callback == null) {
 					callback = null;
@@ -1900,13 +1900,13 @@ layui.define(['jquery', 'element'], function(exports) {
 							name = ref[j];
 							try {
 								xhr = new ActiveXObject(name);
-							} catch (undefined) {}
+							} catch (undefined) { }
 						}
 					}
 				}
 				if (xhr != null) {
 					if (callback != null) {
-						xhr.onreadystatechange = function() {
+						xhr.onreadystatechange = function () {
 							if (xhr.readyState === 4) {
 								if (xhr.status === 200 || xhr.status === 0) {
 									return callback(xhr.responseText);
@@ -1929,7 +1929,7 @@ layui.define(['jquery', 'element'], function(exports) {
 					req = require;
 					fs = req('fs');
 					if (callback != null) {
-						return fs.readFile(path, function(err, data) {
+						return fs.readFile(path, function (err, data) {
 							if (err) {
 								return callback(null);
 							} else {
@@ -1956,7 +1956,7 @@ layui.define(['jquery', 'element'], function(exports) {
 	}, {
 		"./Pattern": 8
 	}],
-	11: [function(require, module, exports) {
+	11: [function (require, module, exports) {
 		var Dumper, Parser, Utils, Yaml;
 
 		Parser = require('./Parser');
@@ -1965,10 +1965,10 @@ layui.define(['jquery', 'element'], function(exports) {
 
 		Utils = require('./Utils');
 
-		Yaml = (function() {
-			function Yaml() {}
+		Yaml = (function () {
+			function Yaml() { }
 
-			Yaml.parse = function(input, exceptionOnInvalidType, objectDecoder) {
+			Yaml.parse = function (input, exceptionOnInvalidType, objectDecoder) {
 				if (exceptionOnInvalidType == null) {
 					exceptionOnInvalidType = false;
 				}
@@ -1978,7 +1978,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				return new Parser().parse(input, exceptionOnInvalidType, objectDecoder);
 			};
 
-			Yaml.parseFile = function(path, callback, exceptionOnInvalidType, objectDecoder) {
+			Yaml.parseFile = function (path, callback, exceptionOnInvalidType, objectDecoder) {
 				var input;
 				if (callback == null) {
 					callback = null;
@@ -1990,8 +1990,8 @@ layui.define(['jquery', 'element'], function(exports) {
 					objectDecoder = null;
 				}
 				if (callback != null) {
-					return Utils.getStringFromFile(path, (function(_this) {
-						return function(input) {
+					return Utils.getStringFromFile(path, (function (_this) {
+						return function (input) {
 							var result;
 							result = null;
 							if (input != null) {
@@ -2009,7 +2009,7 @@ layui.define(['jquery', 'element'], function(exports) {
 				}
 			};
 
-			Yaml.dump = function(input, inline, indent, exceptionOnInvalidType, objectEncoder) {
+			Yaml.dump = function (input, inline, indent, exceptionOnInvalidType, objectEncoder) {
 				var yaml;
 				if (inline == null) {
 					inline = 2;
@@ -2028,11 +2028,11 @@ layui.define(['jquery', 'element'], function(exports) {
 				return yaml.dump(input, inline, 0, exceptionOnInvalidType, objectEncoder);
 			};
 
-			Yaml.stringify = function(input, inline, indent, exceptionOnInvalidType, objectEncoder) {
+			Yaml.stringify = function (input, inline, indent, exceptionOnInvalidType, objectEncoder) {
 				return this.dump(input, inline, indent, exceptionOnInvalidType, objectEncoder);
 			};
 
-			Yaml.load = function(path, callback, exceptionOnInvalidType, objectDecoder) {
+			Yaml.load = function (path, callback, exceptionOnInvalidType, objectDecoder) {
 				return this.parseFile(path, callback, exceptionOnInvalidType, objectDecoder);
 			};
 

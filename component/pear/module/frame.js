@@ -16,7 +16,7 @@ layui.define(['jquery', 'element'], function (exports) {
 			height: opt.height,
 			done: opt.done ? opt.done : function (data) { console.log("菜单渲染成功"); }
 		}
-		if(option.session){
+		if (option.session) {
 			var cacheInfo = frameCache(option.elem).get();
 			if (cacheInfo) {
 				option.data = cacheInfo;
@@ -35,7 +35,7 @@ layui.define(['jquery', 'element'], function (exports) {
 		var $frame = $("#" + this.option.elem + " iframe");
 		$frame.attr("src", url);
 		frameLoading($frame, $frameLoad, loading);
-		if (this.option.session){
+		if (this.option.session) {
 			frameCache(this.option.elem, { id: id, title: title, url: url }).set();
 		}
 	}
@@ -58,7 +58,7 @@ layui.define(['jquery', 'element'], function (exports) {
 		frameLoading($frame, $frameLoad, loading);
 	}
 
-	pearFrame.prototype.clear = function(){
+	pearFrame.prototype.clear = function () {
 		frameCache(this.option.elem).remove();
 	}
 
@@ -81,16 +81,16 @@ layui.define(['jquery', 'element'], function (exports) {
 		}
 	}
 
-	function frameCache(elem, data){
+	function frameCache(elem, data) {
 		var key = elem + "-pear-frame-data-current";
-		return{
-			set: function(){
+		return {
+			set: function () {
 				sessionStorage.setItem(key, JSON.stringify(data));
 			},
-			get: function(){
+			get: function () {
 				return JSON.parse(sessionStorage.getItem(key));
 			},
-			remove: function(){
+			remove: function () {
 				sessionStorage.removeItem(key);
 			}
 		}

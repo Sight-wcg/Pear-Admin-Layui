@@ -12,13 +12,13 @@
 	height: 100%;
 }
 
-.pear-tab-menu{
-	box-shadow: 0 2px 8px #f0f1f2!important;
-	border: 1px solid whitesmoke!important;
-	border-radius: 4px!important;
+.pear-tab-menu {
+	box-shadow: 0 2px 8px #f0f1f2 !important;
+	border: 1px solid whitesmoke !important;
+	border-radius: 4px !important;
 }
 
-.pear-tab-menu .item{
+.pear-tab-menu .item {
 	height: 20px;
 	padding-left: 18px;
 	padding-top: 7px;
@@ -26,9 +26,10 @@
 	color: #333;
 	font-size: 13.5px;
 	line-height: 20px;
-    cursor:pointer;
+	cursor: pointer;
 }
-.pear-tab-menu .item:hover{
+
+.pear-tab-menu .item:hover {
 	background: #36b368;
 	color: white;
 }
@@ -84,7 +85,7 @@
 	display: inline-block;
 }
 
-.pear-tab .layui-tab-close{
+.pear-tab .layui-tab-close {
 	font-size: 13px;
 }
 
