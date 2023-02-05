@@ -402,18 +402,6 @@ layui.define(['message', 'table', 'jquery', 'element', 'yaml', 'form', 'tab', 'm
 					pearAdmin.changeIframe(id, title, url)
 				}
 			}
-			
-			this.fullScreen = function() {
-				if ($(".fullScreen").hasClass("layui-icon-screen-restore")) {
-					screenFun(2).then(function() {
-						$(".fullScreen").eq(0).removeClass("layui-icon-screen-restore");
-					});
-				} else {
-					screenFun(1).then(function() {
-						$(".fullScreen").eq(0).addClass("layui-icon-screen-restore");
-					});
-				}
-			}
 		};
 
 		function refresh() {
@@ -657,16 +645,16 @@ layui.define(['message', 'table', 'jquery', 'element', 'yaml', 'form', 'tab', 'm
 
 
 		body.on("click", ".fullScreen", function() {
-			if ($(this).hasClass("layui-icon-screen-restore")) {
-				fullscreen.fullClose().then(function() {
-					$(".fullScreen").eq(0).removeClass("layui-icon-screen-restore");
-				});
-			} else {
-				fullscreen.fullScreen().then(function() {
-					$(".fullScreen").eq(0).addClass("layui-icon-screen-restore");
-				});
-			}
+      fullscreen.toggle()
 		});
+
+    fullscreen.on('change', function(){
+      if(fullscreen.isFullscreen){
+       $('.fullScreen').eq(0).addClass('layui-icon-screen-restore');
+      }else{
+       $('.fullScreen').eq(0).removeClass('layui-icon-screen-restore');
+      }
+    })
 
 		body.on("click", '[user-menu-id]', function() {
 			if (isMuiltTab(config) === "true" || isMuiltTab(config) === true) {
@@ -969,7 +957,7 @@ layui.define(['message', 'table', 'jquery', 'element', 'yaml', 'form', 'tab', 'm
 		}
 
 		window.onresize = function() {
-			if (!fullscreen.isFullscreen()) {
+			if (!fullscreen.isFullscreen) {
 				$(".fullScreen").eq(0).removeClass("layui-icon-screen-restore");
 			}
 		}
