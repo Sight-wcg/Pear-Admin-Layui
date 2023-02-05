@@ -150,15 +150,8 @@
 				"openType": "_iframe",
 				"href": "view/document/drawer.html"
 			}, {
-				"id": 2022,
-				"title": "消息通知 (过时)",
-				"icon": "layui-icon layui-icon-face-cry",
-				"type": 1,
-				"openType": "_iframe",
-				"href": "view/document/notice.html"
-			}, {
 				"id": 2025,
-				"title": "消息通知 (新增)",
+				"title": "消息通知",
 				"icon": "layui-icon layui-icon-face-cry",
 				"type": 1,
 				"openType": "_iframe",
