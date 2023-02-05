@@ -515,5 +515,6 @@
 });
 
 layui.define([], function (exports) {
+  layui.link(layui.cache.base + "nprogress/nprogress.css");
   exports("nprogress", NProgress);
 });

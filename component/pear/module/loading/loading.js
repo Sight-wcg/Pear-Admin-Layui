@@ -2,6 +2,7 @@ layui.define([], function (exports) {
     "use strict";
 
     var MOD_NAME = 'loading';
+    layui.link(layui.cache.base + "loading/loading.css");
     var pearOper = new function () {
 		this.blockRemove = function(dom,time){
 			Notiflix.Block.Remove(dom, time);

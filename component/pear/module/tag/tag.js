@@ -16,7 +16,7 @@ layui.define("jquery", function (exports) {
       };
       this.configs = {};
     };
-
+    layui.link(layui.cache.base + "tag/tag.css");
   //全局设置
   tag.prototype.set = function (options) {
     var that = this;

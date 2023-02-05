@@ -5,6 +5,7 @@ layui.define(["table", "jquery", "element"], function (exports) {
     $ = layui.jquery,
     element = layui.element;
 
+  layui.link(layui.cache.base + "message/message.css");
   var message = function (opt) {
     this.option = opt;
   };

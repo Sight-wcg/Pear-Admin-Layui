@@ -3,6 +3,7 @@ layui.define(["layer", "carousel"], function (exports) {
   var layer = layui.layer;
   var carousel = layui.carousel;
 
+  layui.link(layui.cache.base + "step/step.css");
   var renderDom = function (elem, stepItems, postion) {
     var stepDiv = '<div class="lay-step">';
     for (var i = 0; i < stepItems.length; i++) {

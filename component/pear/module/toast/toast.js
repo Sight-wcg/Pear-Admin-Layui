@@ -5,6 +5,7 @@
     module.exports = factory(root);
   } else if (window.layui && layui.define) {
     layui.define(function (exports) {
+      layui.link(layui.cache.base + "toast/toast.css");
       exports("toast", factory(root));
     });
   } else {

@@ -6,6 +6,7 @@ layui.define(["jquery"], function (exports) {
   var $ = layui.jquery;
   $ = $ && $.hasOwnProperty("default") ? $["default"] : $;
 
+  layui.link(layui.cache.base + "cropper/cropper.css");
   var DEFAULTS = {
     // Define the view mode of the cropper
     viewMode: 0, // 0, 1, 2, 3

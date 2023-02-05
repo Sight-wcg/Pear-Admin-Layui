@@ -4,6 +4,7 @@ layui.define(["layer", "table"], function (exports) {
   var table = layui.table;
 
   var instances = [];
+  layui.link(layui.cache.base + "treetable/treetable.css");
 
   var treetable = {
     render: function (param) {

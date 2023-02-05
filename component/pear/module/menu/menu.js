@@ -5,6 +5,7 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 		$ = layui.jquery,
 		element = layui.element;
 
+  layui.link(layui.cache.base + "menu/menu.css");
 	var pearMenu = function (opt) {
 		this.option = opt;
 	};

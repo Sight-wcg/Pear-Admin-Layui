@@ -1318,5 +1318,6 @@ layui.define(["jquery", "element"], function (exports) {
     };
   })();
   window.WebuiPopovers = webuiPopovers;
+  layui.link(layui.cache.base + "popover/popover.css");
   exports("popover", WebuiPopovers);
 });

@@ -3,6 +3,7 @@ layui.define(["jquery", "element"], function (exports) {
 
   var $ = layui.jquery;
 
+  layui.link(layui.cache.base + "frame/frame.css");
   var pearFrame = function (opt) {
     this.option = opt;
   };

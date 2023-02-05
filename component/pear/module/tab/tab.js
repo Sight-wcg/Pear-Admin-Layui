@@ -5,6 +5,7 @@ layui.define(["jquery", "element"], function (exports) {
     $ = layui.jquery,
     element = layui.element;
 
+  layui.link(layui.cache.base + "tab/tab.css");
   var pearTab = function (opt) {
     this.option = opt;
   };

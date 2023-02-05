@@ -8,7 +8,8 @@ layui.define(["jquery", "layer", "loading"], function (exports) {
     $ = layui.jquery,
     layer = layui.layer,
     loading = layui.loading;
-
+    
+  layui.link(layui.cache.base + "drawer/drawer.css");
   var drawer = new (function () {
     this.open = function (option) {
       return layerDrawer(option);

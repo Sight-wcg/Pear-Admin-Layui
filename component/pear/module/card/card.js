@@ -5,9 +5,9 @@ layui.define(["table", "laypage", "jquery", "element"], function (exports) {
     $ = layui.jquery,
     element = layui.element,
     laypage = layui.laypage;
-
+  
   var _instances = {}; // 记录所有实例
-
+  layui.link(layui.cache.base + "card/card.css");
   var defaultOption = {
     elem: "#currentTableId", // 构建的模型
     url: "", // 数据 url 连接

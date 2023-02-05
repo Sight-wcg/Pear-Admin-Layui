@@ -14,6 +14,7 @@
   } else if (window.layui && layui.define) {
     //layui加载
     layui.define(["jquery"], function (exports) {
+      layui.link(layui.cache.base + "select/select.css");
       exports("select", factory());
     });
   } else {

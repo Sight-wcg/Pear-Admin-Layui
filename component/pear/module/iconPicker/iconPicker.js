@@ -1,6 +1,7 @@
 layui.define(["laypage", "form"], function (exports) {
   "use strict";
 
+  layui.link(layui.cache.base + "iconPicker/iconPicker.css");
   var IconPicker = function () {
       this.v = "1.1";
     },
