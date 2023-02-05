@@ -1,4 +1,4 @@
-layui.define(['message', 'table', 'jquery', 'element', 'yaml', 'form', 'tab', 'menu', 'frame', 'theme', 'convert','fullscreen'],
+layui.define(['setter','message', 'table', 'jquery', 'element', 'yaml', 'form', 'tab', 'menu', 'frame', 'theme', 'convert','fullscreen'],
 	function(exports) {
 		"use strict";
 
@@ -12,7 +12,8 @@ layui.define(['message', 'table', 'jquery', 'element', 'yaml', 'form', 'tab', 'm
 			pearFrame = layui.frame,
 			pearTheme = layui.theme,
 			message = layui.message,
-			fullscreen=layui.fullscreen;
+			fullscreen=layui.fullscreen,
+      setter = layui.setter;
 
 		var bodyFrame;
 		var sideMenu;
@@ -24,16 +25,16 @@ layui.define(['message', 'table', 'jquery', 'element', 'yaml', 'form', 'tab', 'm
 
 		var pearAdmin = new function() {
 
-			var configType = 'yml';
-			var configPath = 'pear.config.yml';
+			// var configType = 'yml';
+			// var configPath = 'pear.config.yml';
 
-			this.setConfigPath = function(path) {
-				configPath = path;
-			}
+			// this.setConfigPath = function(path) {
+			// 	configPath = path;
+			// }
 
-			this.setConfigType = function(type) {
-				configType = type;
-			}
+			// this.setConfigType = function(type) {
+			// 	configType = type;
+			// }
 
 			this.render = function(initConfig) {
 				if (initConfig !== undefined) {
@@ -44,21 +45,22 @@ layui.define(['message', 'table', 'jquery', 'element', 'yaml', 'form', 'tab', 'm
 			}
 
 			this.readConfig = function() {
-				if (configType === "yml") {
-					return yaml.load(configPath);
-				} else {
-					var data;
-					$.ajax({
-						url: configPath,
-						type: 'get',
-						dataType: 'json',
-						async: false,
-						success: function(result) {
-							data = result;
-						}
-					})
-					return data;
-				}
+				// if (configType === "yml") {
+				// 	return yaml.load(configPath);
+				// } else {
+				// 	var data;
+				// 	$.ajax({
+				// 		url: configPath,
+				// 		type: 'get',
+				// 		dataType: 'json',
+				// 		async: false,
+				// 		success: function(result) {
+				// 			data = result;
+				// 		}
+				// 	})
+				// 	return data;
+				// }
+        return setter;
 			}
 
 			this.messageRender = function(option) {
