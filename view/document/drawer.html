@@ -34,185 +34,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="layui-col-md12">
-				<div class="layui-card">
-					<div class="layui-card-header">抽屉</div>
-					<div class="layui-card-body">
-						<button class="drawer-top pear-btn pear-btn-primary">上</button>
-						<button class="drawer-bottom pear-btn pear-btn-success">下</button>
-						<button class="drawer-left pear-btn pear-btn-warming">左</button>
-						<button class="drawer-right pear-btn pear-btn-danger">右</button>
-					</div>
-				</div>
-			</div>
-			<div class="layui-col-md12">
-				<div class="layui-collapse">
-					<div class="layui-colla-item">
-						<h2 class="layui-colla-title">显示代码</h2>
-						<div class="layui-colla-content">
-							<pre class="layui-code" lay-encode="true">
-								layui.use(['drawer'], function() {
-									var drawer = layui.drawer;
-
-								    drawer.open({
-								        direction: "right",
-								        dom: ".layer-top",
-								        distance: "30%"
-								    });
-								})
-							</pre>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="layui-col-md12">
-				<div class="layui-card">
-					<div class="layui-card-header">进阶</div>
-					<div class="layui-card-body">
-						<button class="drawer-close-mask pear-btn pear-btn-primary">手动关闭</button>
-					</div>
-				</div>
-			</div>
-			<div class="layui-col-md12">
-				<div class="layui-collapse">
-					<div class="layui-colla-item">
-						<h2 class="layui-colla-title">显示代码</h2>
-						<div class="layui-colla-content">
-							<pre class="layui-code" lay-encode="true">
-								var dom;
-
-								$(".drawer-close-mask").click(function() {
-								    dom = drawer.open({
-								        direction: "right",
-								        dom: ".layer-close-mask",
-								        distance: "30%",
-								        maskClose: false
-								    });
-								})
-
-								$("#btnClose").click(function() {
-								    dom.close();
-								})
-
-							</pre>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="layui-col-md12">
-				<div class="layui-card">
-					<div class="layui-card-header">扩展</div>
-					<div class="layui-card-body">
-						<button class="drawer-auto-close pear-btn pear-btn-success">自动关闭</button>
-					</div>
-				</div>
-			</div>
-			<div class="layui-col-md12">
-				<div class="layui-collapse">
-					<div class="layui-colla-item">
-						<h2 class="layui-colla-title">显示代码</h2>
-						<div class="layui-colla-content">
-							<pre class="layui-code" lay-encode="true">
-								layui.use(['drawer'], function() {
-									var drawer = layui.drawer;
-
-								    $(".drawer-auto-close").click(function() {
-								        dom = drawer.open({
-								            direction: "right",
-								            dom: ".layer-auto-close",
-								            distance: "30%",
-								            maskClose: false,
-								            time: 1000
-								        });
-								    })
-								})
-							</pre>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="layui-col-md12">
-				<div class="layui-card">
-					<div class="layui-card-header">扩展</div>
-					<div class="layui-card-body">
-						<button class="drawer-call-back pear-btn pear-btn-success">回调函数</button>
-					</div>
-				</div>
-			</div>
-			<div class="layui-col-md12">
-				<div class="layui-collapse">
-					<div class="layui-colla-item">
-						<h2 class="layui-colla-title">显示代码</h2>
-						<div class="layui-colla-content">
-							<pre class="layui-code" lay-encode="true">
-								layui.use(['drawer'], function() {
-									var drawer = layui.drawer;
-
-								    $(".drawer-auto-close").click(function() {
-								        dom = drawer.open({
-								            direction: "right",
-								            dom: ".layer-auto-close",
-								            distance: "30%",
-								            success:function(){
-								                layer.msg("触发回调函数");
-								            }
-								        });
-								    })
-								})
-							</pre>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="layui-col-md12">
-				<div class="layui-card">
-					<div class="layui-card-header">扩展</div>
-					<div class="layui-card-body">
-						<div id="targetEl"
-								style="width: 600px;
-								height: 300px;
-								overflow: hidden;
-								position: relative;
-								border: 1px solid gainsboro;
-								background-color: #EEE;
-								margin-top: 20px;
-								display: flex;
-								justify-content: space-around;
-								align-items: center"">
-								<button id="targetDemo" class="pear-btn pear-btn-success">指定容器内打开</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="layui-col-md12">
-				<div class="layui-collapse">
-					<div class="layui-colla-item">
-						<h2 class="layui-colla-title">显示代码</h2>
-						<div class="layui-colla-content">
-							<pre class="layui-code" lay-encode="true">
-									layui.use(['drawer'], function() {
-									  var drawer = layui.drawer;
-									    $("#targetDemo").click(function () {
-									      drawer.open({
-									      // 指定挂载节点
-									      target: "#targetEl"
-									      direction: "right",
-									      dom: ".layer-right",
-									      distance: "50%",
-									      });
-									})
-							</pre>
-						</div>
-					</div>
-				</div>
-			</div>
 			<!-- 新版 API -->
 			<div class="layui-col-md12">
 				<div class="layui-card">
 					<div class="layui-card-header">基于 layer 的抽屉扩展</div>
 					<div class="layui-card-body">
-						<p style="margin-bottom: 10px;">兼容原版 drawer 所有参数,要使用 layer 扩展,设置 legacy 选项为 false 即可</p>
 						<button id="layerDrawerLeft" class="pear-btn pear-btn-success">左</button>
 						<button id="layerDrawerRight" class="pear-btn pear-btn-success">右</button>
 						<button id="layerDrawerTop" class="pear-btn pear-btn-success">上</button>
@@ -251,7 +77,6 @@
 							<pre class="layui-code" lay-encode="true">
 											$("#layerDrawerLeft").click(function(){
 											  drawer.open({
-											    legacy: false,
 											    offset: 'l',
 											    area: "30%",
 											    content: "left内容",
@@ -259,7 +84,6 @@
 											})
 											$("#layerDrawerRight").click(function () {
 											  drawer.open({
-											    legacy: false,
 											    offset: 'r',
 											    area: "30%",
 											    content: "right内容",
@@ -267,14 +91,12 @@
 											})
 											$("#layerDrawerTop").click(function () {
 											  drawer.open({
-											    legacy: false,
 										      offset: "t",
 											    content: "top内容",
 											  })
 											})
 											$("#layerDrawerBottom").click(function () {
 											  drawer.open({
-											    legacy: false,
 											    offset: "b",
 											    content: "bottom内容",
 											  })
@@ -282,7 +104,6 @@
 
 											$("#layerDrawer").click(function () {
 											  var index = drawer.open({
-											    legacy: false,
 											    title: ['标题', 'font-size:16px;color:#2d8cf0'],
 											    maxmin: true,
 											    offset: "r",
@@ -301,7 +122,6 @@
 											$("#layerDrawerParent").click(function () {
 
 											  var index = parent.layui.drawer.open({
-												    legacy: false,
 												    title: ['标题', 'font-size:16px;color:#2d8cf0'],
 												    maxmin: true,
 												    offset: "r",
@@ -319,17 +139,15 @@
 
 											$("#layertargetDemo").click(function () {
 											    drawer.open({
-											    legacy: false,
 											    target: "#layertargetEl",
-											    direction: "right",
-											    dom: ".layer-right",
-											    distance: "50%",
+											    offset: "r",
+											    content: $(".layer-right"),
+											    area: "50%",
 											    });
 											})
 
 											$("#layerDrawerIframe").click(function () {
 											  drawer.open({
-											  legacy: false,
 											  title: ['用户管理', 'font-size:16px;color:#2d8cf0'],
 											  offset: 'r',
 											  area: "80%",
@@ -341,7 +159,6 @@
 
 											$("#layerDrawerURL").click(function () {
 											   drawer.open({
-										     legacy: false,
 										     title: ['用户管理', 'font-size:16px;color:#2d8cf0'],
 											   offset: 'r',
 											   area: "80%",
@@ -402,31 +219,28 @@
 
 			$("#layerDrawerIframe").click(function () {
 				drawer.open({
-					legacy: false,
 					title: ['用户管理', 'font-size:16px;color:#2d8cf0'],
 					offset: 'r',
 					area: "80%",
 					maxmin: true,
 					closeBtn: 1,
-					iframe: window.location.origin + "/view/document/table.html"
+					iframe: window.top.location.origin+window.top.location.pathname + "view/document/table.html"
 				})
 			})
 
 			$("#layerDrawerURL").click(function () {
 				drawer.open({
-					legacy: false,
 					title: ['用户管理', 'font-size:16px;color:#2d8cf0'],
 					offset: 'r',
 					area: "80%",
 					maxmin: true,
 					closeBtn: 1,
-					url: window.location.origin + "/view/document/drawerFragment.html"
+					url: window.top.location.origin + window.top.location.pathname + "view/document/drawerFragment.html"
 				})
 			})
 
 			$("#layerDrawerLeft").click(function(){
 				drawer.open({
-					legacy: false,
 					offset: 'l',
 					area: "30%",
 					content: "left内容",
@@ -434,7 +248,6 @@
 			})
 			$("#layerDrawerRight").click(function () {
 				drawer.open({
-					legacy: false,
 					offset: 'r',
 					area: "30%",
 					content: "right内容",
@@ -442,14 +255,12 @@
 			})
 			$("#layerDrawerTop").click(function () {
 				drawer.open({
-					legacy: false,
 					offset: "t",
 					content: "top内容",
 				})
 			})
 			$("#layerDrawerBottom").click(function () {
 				drawer.open({
-					legacy: false,
 					offset: "b",
 					content: "bottom内容",
 				})
@@ -457,7 +268,6 @@
 
 			$("#layerDrawer").click(function () {
 				var index = drawer.open({
-					legacy: false,
 					title: ['标题', 'font-size:16px;color:#2d8cf0'],
 					maxmin: true,
 					offset: "r",
@@ -475,7 +285,6 @@
 
 			$("#layerDrawerParent").click(function () {
 				var index = parent.layui.drawer.open({
-					legacy: false,
 					title: ['标题', 'font-size:16px;color:#2d8cf0'],
 					maxmin: true,
 					offset: "r",
@@ -492,104 +301,12 @@
 			})
 
 			$("#layertargetDemo").click(function () {
-				drawer.open({
-					legacy: false,
-					target: "#layertargetEl",
-					direction: "right",
-					dom: ".layer-right",
-					distance: "50%",
-				});
-			})
-
-			$(".drawer-right").click(function() {
-				drawer.open({
-					direction: "right",
-					dom: ".layer-right",
-					distance: "30%"
-				});
-			})
-
-			$(".drawer-left").click(function() {
-
-				drawer.open({
-					direction: "left",
-					dom: ".layer-left",
-					distance: "30%"
-				});
-
-			})
-
-			$(".drawer-top").click(function() {
-				drawer.open({
-					direction: "top",
-					dom: ".layer-top",
-					distance: "30%"
-				});
-			})
-
-			$(".drawer-bottom").click(function() {
-				drawer.open({
-					direction: "bottom",
-					dom: ".layer-bottom",
-					distance: "30%"
-				});
-			})
-
-			$(".drawer-open-mask").click(function() {
-				drawer.open({
-					direction: "right",
-					dom: ".layer-open-mask",
-					distance: "30%",
-					maskClose: true
-				});
-			})
-
-			var dom;
-
-			$(".drawer-close-mask").click(function() {
-				dom = drawer.open({
-					direction: "right",
-					dom: ".layer-close-mask",
-					distance: "30%",
-					maskClose: false
-				});
-			})
-
-			$("#btnClose").click(function() {
-				dom.close();
-			})
-
-			$(".drawer-auto-close").click(function() {
-				dom = drawer.open({
-					direction: "right",
-					dom: ".layer-auto-close",
-					distance: "30%",
-					maskClose: false,
-					time: 1000
-				});
-			})
-
-			$(".drawer-call-back").click(function() {
-				dom = drawer.open({
-					direction: "right",
-					dom: ".layer-right",
-					distance: "30%",
-					success: function() {
-						layer.msg("触发回调函数", {
-							icon: 1,
-							time: 1000
-						});
-					}
-				});
-			})
-
-			$("#targetDemo").click(function () {
-				drawer.open({
-					target: "#targetEl",
-					direction: "right",
-					dom: ".layer-right",
-					distance: "50%",
-				});
+        drawer.open({
+          target: "#layertargetEl",
+          offset: "r",
+          content: $(".layer-right"),
+          area: "50%",
+        });
 			})
 
 		})
