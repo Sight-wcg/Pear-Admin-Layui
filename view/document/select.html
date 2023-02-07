@@ -41,13 +41,7 @@
           默认主题
         </div>
         <div class="layui-card-body">
-          <select name="city5" xm-select="select5" xm-select-skin="default">
-            <option value="1">北京</option>
-            <option value="2" selected="selected">上海</option>
-            <option value="3">广州</option>
-            <option value="4" selected="selected">深圳</option>
-            <option value="5">天津</option>
-          </select>
+          <div id="demo1" class="xm-select-demo"></div>
         </div>
       </div>
     </div>
@@ -57,13 +51,17 @@
           <h2 class="layui-colla-title">显示代码</h2>
           <div class="layui-colla-content">
             <pre class="layui-code" lay-encode="true">
-              <select name="demo1" xm-selects="demo1" xm-select-skin="default">
-                <option value="1">北京</option>
-                <option value="2" selected="selected">上海</option>
-                <option value="3">广州</option>
-                <option value="4" selected="selected">深圳</option>
-                <option value="5">天津</option>
-              </select>
+              <div id="demo1" class="xm-select-demo"></div>
+
+      var demo1=select.render({
+        el: '#demo1',
+        data: [
+          {name: '北京',value: 1},
+          {name: '上海',value: 2},
+          {name: '广州',value: 3},
+          {name: '天津',value: 4},
+        ]
+      })
             </pre>
           </div>
         </div>
@@ -75,13 +73,7 @@
           绿色主题
         </div>
         <div class="layui-card-body">
-          <select name="city1" xm-select="select1">
-            <option value="1">北京</option>
-            <option value="2" selected="selected">上海</option>
-            <option value="3">广州</option>
-            <option value="4" selected="selected">深圳</option>
-            <option value="5">天津</option>
-          </select>
+          <div id="demo2" class="xm-select-demo"></div>
         </div>
       </div>
     </div>
@@ -109,13 +101,7 @@
           通用主题
         </div>
         <div class="layui-card-body">
-          <select name="city2" xm-select="select2" xm-select-skin="normal">
-            <option value="1">北京</option>
-            <option value="2" selected="selected">上海</option>
-            <option value="3">广州</option>
-            <option value="4" selected="selected">深圳</option>
-            <option value="5">天津</option>
-          </select>
+          <div id="demo3" class="xm-select-demo"></div>
         </div>
       </div>
     </div>
@@ -143,13 +129,7 @@
           警告主题
         </div>
         <div class="layui-card-body">
-          <select name="city3" xm-select="select3" xm-select-skin="warm">
-            <option value="1">北京</option>
-            <option value="2" selected="selected">上海</option>
-            <option value="3">广州</option>
-            <option value="4" selected="selected">深圳</option>
-            <option value="5">天津</option>
-          </select>
+          <div id="demo4" class="xm-select-demo"></div>
         </div>
       </div>
     </div>
@@ -177,13 +157,7 @@
           危险主题
         </div>
         <div class="layui-card-body">
-          <select name="city4" xm-select="select4" xm-select-skin="danger">
-            <option value="1">北京</option>
-            <option value="2" selected="selected">上海</option>
-            <option value="3">广州</option>
-            <option value="4" selected="selected">深圳</option>
-            <option value="5">天津</option>
-          </select>
+          <div id="demo5" class="xm-select-demo"></div>
         </div>
       </div>
     </div>
@@ -209,8 +183,75 @@
   <script src="../../component/layui/layui.js"></script>
   <script src="../../component/pear/pear.js"></script>
   <script>
-    layui.use(['select','code','element'],function() {
-      let select=layui.select;
+    layui.use(['xmSelect','code','element'],function() {
+      let select=layui.xmSelect;
+
+      var demo1=select.render({
+        el: '#demo1',
+        toolbar: {show: true},
+        data: [
+          {name: '北京',value: 1, selected: true},
+          {name: '上海',value: 2},
+          {name: '广州',value: 3},
+          {name: '天津',value: 4},
+        ]
+      })
+
+      var demo2=select.render({
+        el: '#demo2',
+        toolbar: {show: true},
+        theme: {
+          color: '#5FB878',
+        },
+        data: [
+          {name: '北京',value: 1},
+          {name: '上海',value: 2, selected: true},
+          {name: '广州',value: 3, selected: true},
+          {name: '天津',value: 4},
+        ]
+      })
+      
+      var demo3=select.render({
+        el: '#demo3',
+        toolbar: {show: true},
+        theme: {
+          color: '#2D8CF0',
+        },
+        data: [
+          {name: '北京',value: 1},
+          {name: '上海',value: 2},
+          {name: '广州',value: 3},
+          {name: '天津',value: 4},
+        ]
+      })
+
+      var demo4=select.render({
+        el: '#demo4',
+        toolbar: {show: true},
+        theme: {
+          color: '#E6A23C',
+        },
+        data: [
+          {name: '北京',value: 1},
+          {name: '上海',value: 2},
+          {name: '广州',value: 3},
+          {name: '天津',value: 4},
+        ]
+      })
+
+      var demo5=select.render({
+        el: '#demo5',
+        toolbar: {show: true},
+        theme: {
+          color: '#F56C6C',
+        },
+        data: [
+          {name: '北京',value: 1},
+          {name: '上海',value: 2},
+          {name: '广州',value: 3},
+          {name: '天津',value: 4},
+        ]
+      })
 
       layui.code();
     });

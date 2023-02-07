@@ -19,7 +19,7 @@ layui
     echarts: "echarts", // 数据图表组件
     echartsTheme: "echartsTheme", // 数据图表主题
     encrypt: "encrypt", // 数据加密组件
-    select: "select/select", // 下拉多选组件
+    xmSelect: "select/xmSelect", // 下拉多选组件
     drawer: "drawer/drawer", // 抽屉弹层组件
     step: "step/step", // 分布表单组件
     tag: "tag/tag", // 多标签页组件
